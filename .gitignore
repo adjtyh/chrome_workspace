@@ -10,7 +10,7 @@ Desktop.ini
 .class
 .war
 .zip
-.rar
+*.rar
 .idea
 *.iml
 .settings/*
