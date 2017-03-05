@@ -1,0 +1,7 @@
+/**
+ * 
+ */
+chrome.runtime.sendMessage('Hello', function(response){
+    //document.write(response);
+	$("#div1")[0].innerText=response;
+});

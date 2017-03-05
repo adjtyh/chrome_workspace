@@ -18,6 +18,7 @@
     },
     "options_page": "options.html",
     "permissions": [
+    	"storage",
         "http://php.weather.sina.com.cn/*"
     ]
 }

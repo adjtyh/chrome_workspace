@@ -30,15 +30,22 @@
  * city //+ "&password=DJOYnieT8234jlsK&day=0"; httpRequest(url, showWeather);
  */
 
-var city = localStorage.city;
-city = city ? city : "北京";
-$("h1")[0].innerText=city;
-city = utf2gb(city);
-var url = "http://php.weather.sina.com.cn/xml.php?city=" + city
-		+ "&password=DJOYnieT8234jlsK&day=";
-for(var i = 0;i<5;i++){
-	$.get(url+i, showWeather);
-}
+//var city = localStorage.city;
+var city="";
+chrome.storage.sync.get("city", function(result){
+	console.log(result);
+	city=result.city;
+	city = city ? city : "北京";
+	$("h1")[0].innerText=city;
+	city = utf2gb(city);
+	var url = "http://php.weather.sina.com.cn/xml.php?city=" + city
+	+ "&password=DJOYnieT8234jlsK&day=";
+	for(var i = 0;i<5;i++){
+		$.get(url+i, showWeather);
+	}
+});
+
+
 
 function showWeather(data, status, xhr) {
 	if (status == "success") {

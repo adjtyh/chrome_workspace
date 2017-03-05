@@ -1,0 +1,22 @@
+/**
+ * 
+ */
+// var city = localStorage.city || "北京";
+var city="";
+chrome.storage.get("city", function(result){
+	city=result;
+	$("#city")[0].value = city;
+});
+
+// document.getElementById('city').value = city;
+/*
+ * document.getElementById('save').onclick = function(){ localStorage.city =
+ * document.getElementById('city').value; alert('保存成功。');
+ */
+$("#save").click(function() {
+	// localStorage.city = $("#city")[0].value;
+	chrome.storage.set({"city":$("#city")[0].value}, function(){
+	    // do something
+		alert('保存成功。');
+	});
+});

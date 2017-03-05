@@ -1,0 +1,15 @@
+{
+    "manifest_version": 2,
+    "name": "保存图片",
+    "version": "1.0",
+    "description": "保存图片 in current tab",
+    "background": {
+        "scripts": ["js/background.js"],
+        "persistent": false
+    },
+    "permissions": [
+        "activeTab",
+        "contextMenus",
+        "downloads"
+    ]
+}
