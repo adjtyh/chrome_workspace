@@ -1,0 +1,21 @@
+/**
+ * 
+ */
+function httpRequest(url, callback){
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", url, true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4) {
+            callback(xhr.responseXML);
+        }
+    }
+    xhr.send();
+}
+
+httpRequest('http://1212.ip138.com/ic.asp', function(xmlDoc){
+	var x=xmlDoc.getElementsByTagName("center");
+	
+	
+	document.getElementById("ip_div").innerHTML=x[0].childNodes[0].nodeValue;
+
+});

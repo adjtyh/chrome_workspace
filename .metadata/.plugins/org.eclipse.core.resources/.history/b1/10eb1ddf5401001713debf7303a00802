@@ -1,0 +1,43 @@
+/**
+ * 
+ */
+function httpRequest(url, callback){
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", url, true);
+    //xhr.setRequestHeader("dataType","JSONP");
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4) {
+            callback(xhr.responseText);
+        }
+    }
+    xhr.send();
+}
+
+function showWeather(result){
+
+	var parser = new DOMParser();
+    result = parser.parseFromString(result, "text/xml");
+
+    var table = '<table><tr><th>日期</th><th>天气</th><th>最低温度</th><th>最高温度</th></tr>';
+
+        //var d = new Date(list[i].dt*1000);
+        table += '<tr>';
+        //table += '<td>'+d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate()+'</td>';
+        table += '<td>'+result.getElementsByTagName("savedate_weather")[0].childNodes[0].nodeValue+'</td>';
+        //table += '<td>'+list[i].weather[0].description+'</td>';
+        table += '<td>'+result.getElementsByTagName("status1")[0].childNodes[0].nodeValue+'</td>';
+        //table += '<td>'+Math.round(list[i].temp.min-273.15)+' °C</td>';
+        table += '<td>'+result.getElementsByTagName("temperature2")[0].childNodes[0].nodeValue+'</td>';
+        //table += '<td>'+Math.round(list[i].temp.max-273.15)+' °C</td>';
+        table += '<td>'+result.getElementsByTagName("temperature1")[0].childNodes[0].nodeValue+'</td>';
+        table += '</tr>';
+
+    table += '</table>';
+    document.getElementById('weather').innerHTML = table;
+}
+
+var city = localStorage.city;
+city = city?city:'北京';
+city = utf2gb(city);
+var url = "http://php.weather.sina.com.cn/xml.php?city="+city+"&password=DJOYnieT8234jlsK&day=0";
+httpRequest(url, showWeather);

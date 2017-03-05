@@ -1,0 +1,52 @@
+/*
+ * 
+ */
+function getCodeStr(){
+ return codestr;
+}
+function gb2utf(gbStr){
+	 var codeStr = getCodeStr();
+	 var codeRE = new RegExp("(%..%..)","gi");
+	 var replaceRE = new RegExp("(%..%..)","i");
+	 var gbCode;
+	 var utfCode;
+	 var gbStart;
+	 while((codeRE.lastIndex < gbStr.length) && replaceRE.test(gbStr)){
+	  codeRE.exec(gbStr);
+	  gbCode = new String(RegExp.$1);
+	  gbStart = new Number(codeStr.indexOf(gbCode.toLowerCase()));
+	  var utfStart = 0;
+	  if(gbStart != -1){
+	   utfStart= gbStart + 7;
+	   utfCode = codeStr.substring(utfStart,utfStart + 6);
+	  }else{
+	   utfCode = "%u3000";
+	  }
+	  gbStr = gbStr.replace(replaceRE,utfCode);
+	 }
+	 return gbStr;
+	}
+function utf2gb(utfStr){
+    utfStr=escape(utfStr);
+    var codeStr=getCodeStr();
+ var codeRE = new RegExp("(%.....)","gi");
+ var replaceRE = new RegExp("(%.....)","i");
+ var gbCode;
+ var utfCode;
+    var utfStart;
+    while((codeRE.lastIndex < utfStr.length) && replaceRE.test(utfStr)){
+        codeRE.exec(utfStr);
+        utfCode=new String(RegExp.$1);
+        utfStart=new Number(codeStr.indexOf(utfCode.toLowerCase()));
+  var gbStart = 0;
+        if(utfStart!= -1){
+      gbStart=utfStart-7;
+            gbCode=codeStr.substring(gbStart,gbStart + 6);
+  }else{
+      gbCode="%a1%a1";
+  }
+  utfStr = utfStr.replace(utfCode,gbCode);
+ }
+
+ return utfStr;
+}

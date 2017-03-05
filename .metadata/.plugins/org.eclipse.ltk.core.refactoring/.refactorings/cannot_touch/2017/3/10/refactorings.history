@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;cannot_touch/js/cannot_touch.js&apos; to &apos;options.js&apos;" description="Rename resource &apos;cannot_touch.js&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="js/cannot_touch.js" name="options.js" stamp="1488672662429" updateReferences="true"/>
+</session>

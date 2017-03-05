@@ -1,0 +1,29 @@
+/**
+ * 
+ */
+/*function httpRequest(url, callback){
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", url, true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4) {
+            callback(true);
+        }
+    }
+    xhr.onerror = function(){
+        callback(false);
+    }
+    xhr.send();
+}
+
+setInterval(function(){
+    httpRequest('http://www.google.cn/', function(status){
+        chrome.browserAction.setIcon({path: 'images/'+(status?'green.png':'red.png')});
+    });
+},5000);*/
+
+function checkOnline(){
+	$.get("http://www.google.cn/",function(data,status){
+		chrome.browserAction.setIcon({path: 'images/'+(status=="success"?'green.png':'red.png')});
+	})
+}
+setInterval(checkOnline,1000);

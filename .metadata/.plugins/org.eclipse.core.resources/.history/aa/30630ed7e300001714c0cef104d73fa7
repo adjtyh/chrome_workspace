@@ -1,0 +1,24 @@
+{
+    "manifest_version": 2,
+    "name": "永远点不到的搜索按钮",
+    "version": "1.0",
+    "description": "让你永远也点击不到Google的搜索按钮",
+    "icons": {
+        "16": "images/no_touch.png",
+        "48": "images/no_touch.png",
+        "128": "images/no_touch.png"
+    },
+    "browser_action": {
+        "default_icon": {
+            "19": "images/no_touch.png",
+            "38": "images/no_touch.png"
+        },
+        "default_title": "Extension Title"
+    },
+    "content_scripts": [
+        {
+            "matches": ["*://www.baidu.com/"],
+            "js": ["js/cannot_touch.js"]
+        }
+    ]
+}

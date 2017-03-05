@@ -1,0 +1,17 @@
+/**
+ * 
+ */
+function httpRequest(url, callback){
+    var xhr = new XMLHttpRequest();
+    xhr.open("GET", url, true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4) {
+            callback(xhr.responseXML);
+        }
+    }
+    xhr.send();
+}
+
+httpRequest('http://1212.ip138.com/ic.asp', function(ip){
+    document.getElementByTagNames('center')[0].innerText = ip.;
+});
