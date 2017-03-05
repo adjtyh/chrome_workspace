@@ -1,0 +1,25 @@
+/**
+ * 
+ */
+chrome.runtime.onMessage.addListener(function(message, sender, sendResponse){
+    if(message == 'Hello'){
+        sendResponse('Hello from background.');
+    }
+});
+
+var city="";
+chrome.storage.sync.get("city", function(result){
+	console.log(result);
+	city=result.city;
+	city = city ? city : "北京";
+	$("h1")[0].innerText=city;
+	city = utf2gb(city);
+	var url = "http://php.weather.sina.com.cn/xml.php?city=" + city
+	+ "&password=DJOYnieT8234jlsK&day=";
+	for(var i = 0;i<5;i++){
+		$.get(url+i, showWeather);
+	}
+});
+
+$.ajax({url:"https://sale.jd.com/act/InqRKmz0tg.html?cpdad=1DLSUE",success:function(result){
+	$("#div1").html(result);

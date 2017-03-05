@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	width: 520px;
+	height: 270px;
+}
+
+table {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 12px;
+	width: 480px;
+	text-align: left;
+	border-collapse: collapse;
+	border: 1px solid #69c;
+	margin: 20px;
+	cursor: default;
+}
+
+table th {
+	font-weight: normal;
+	font-size: 14px;
+	color: #039;
+	border-bottom: 1px dashed #69c;
+	padding: 12px 17px;
+	white-space: nowrap;
+}
+
+table td {
+	color: #669;
+	padding: 7px 17px;
+	white-space: nowrap;
+}
+
+table tbody tr:hover td {
+	color: #339;
+	background: #d0dafd;
+}
+</style>
+<body>
+	<h1 id="h1"></h1>
+	<div id="div1">
+		<h1>a标签地址:</h1>
+		<h1 id="addr"><h1>
+	</div>
+	<script src="js/jquery-3.1.1.js"></script>
+	<script src="js/encode.js"></script>
+	<script src="js/jd_go.js"></script>
+</body>
+</html>
