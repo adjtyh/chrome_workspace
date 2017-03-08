@@ -1,0 +1,36 @@
+{
+    "manifest_version": 2,
+    "name": "jd_go",
+    "version": "1.0",
+    "description": "jd_go",
+    "icons": {
+        "16": "images/weather.png",
+        "48": "images/weather.png",
+        "128": "images/weather.png"
+    },
+    "browser_action": {
+        "default_icon": {
+            "19": "images/weather.png",
+            "38": "images/weather.png"
+        },
+        "default_title": "jd_go",
+        "default_popup": "popup.html"
+    },
+    "options_page": "options.html",
+    "permissions": [
+    	"storage",
+        "https://*.jd.com/*"
+    ],
+    "background": {
+        "scripts": [
+			"js/jquery-3.1.1.js","js/bg.js"
+        ]
+    },
+    "content_scripts": [
+        {
+            "matches": ["https://item.jd.com/3867761.html"],
+            "js": ["js/jquery-3.1.1.js","js/clickonekey.js"],
+            "run_at":"document_end"
+        }
+    ]
+}

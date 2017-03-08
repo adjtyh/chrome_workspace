@@ -1,0 +1,36 @@
+var url = "https://p.3.cn/prices/mgets?callback=jQuery9837202&type=1&area=19_1666_36267_36282.137957593&pdtk=&pduid=1488722444273491482144&pdpin=adjtyh&pdbp=0&skuIds=J_3867761";
+var r ;
+$.get(url,function(result){
+	alert("数据: " + result + "\n状态: " + status);
+});
+
+chrome.runtime.onMessage.addListener(function(message, sender, sendResponse) {
+	if (message == 'start') { // sendResponse('Hello from background.');
+		$.ajax({
+			url : "https://item.jd.com/3867761.html?cpdad=1DLSUE",
+			success : function(result) {
+				// $("#div1").html(result);
+				var el = document.createElement("div");
+				el.innerHTML = result;
+				var m1 = el.getElementsByTagName("li")[27];
+				var m2 = m1.getElementsByClassName("jBtnArea")[0];
+				var m3 = m2.getElementsByTagName("a")[0];
+				var m4 = m3.href;
+				var msg = m4;
+				chrome.runtime.sendMessage(msg, function(response) {
+					// document.write(response);
+					// $("#div1")[0].innerText=response;
+					console.log("s发送" + msg + "成功!");
+				});
+			}
+		});
+	}
+	if(message == 'stop'){
+		
+		chrome.runtime.sendMessage("stop", function(response) {
+			// document.write(response);
+			// $("#div1")[0].innerText=response;
+			console.log("s发送" + "stop" + "成功!");
+		});
+	}
+});

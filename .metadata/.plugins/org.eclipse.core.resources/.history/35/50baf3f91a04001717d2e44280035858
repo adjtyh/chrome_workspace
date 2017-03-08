@@ -1,0 +1,26 @@
+//var price="";
+//for (var i = 0; i < 5; i++) {
+//	setTimeout()
+//}
+
+function done(){
+	var price = $("span .J-p-3867761")[0].innerText;
+	if (price != "") {
+
+		// 价钱小于10，一键购买
+		if (price < 10) {
+			$("#btn-onkeybuy").click();
+		} else {
+			// 否则刷新页面
+			alert(i.toString());
+			location.reload();
+		}
+	}
+}
+done();
+
+//持续点击一键购买
+setInterval(function(){$("#btn-onkeybuy")[0].click();},1000);
+//持续点击提交订单
+setInterval(function(){$("#order-submit")[0].click();},1000);
+
