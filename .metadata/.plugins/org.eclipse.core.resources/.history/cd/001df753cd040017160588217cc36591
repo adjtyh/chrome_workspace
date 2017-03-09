@@ -20,7 +20,7 @@ chrome.extension.onMessage.addListener(
         		setTimeout(function(){
         			clearInterval(mysInter);
         			$("#btn-onkeybuy")[0].click();
-        			},2000);
+        			},1000);
             }  
             else  
                 sendResponse({result: "不告诉你"})  
@@ -28,11 +28,7 @@ chrome.extension.onMessage.addListener(
 
 if(location.pathname=="/shopping/order/getEasyOrderInfo.action"){
 	//持续点击提交订单
-	var mysInter1 = setInterval(function(){$("#order-submit")[0].click();},100);
-	setTimeout(function(){
-		clearInterval(mysInter1);
-		$("#btn-onkeybuy")[0].click();
-		},2000);
+	setInterval(function(){$("#order-submit")[0].click();},100);
 	
 }
 

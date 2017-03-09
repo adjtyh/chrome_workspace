@@ -20,7 +20,7 @@ chrome.extension.onMessage.addListener(
         		setTimeout(function(){
         			clearInterval(mysInter);
         			$("#btn-onkeybuy")[0].click();
-        			},2000);
+        			},1000);
             }  
             else  
                 sendResponse({result: "不告诉你"})  

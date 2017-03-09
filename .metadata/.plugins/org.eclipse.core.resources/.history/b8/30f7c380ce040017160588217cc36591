@@ -41,7 +41,7 @@ var myInt = setInterval(function() {
 		url : urll,
 		success : function(result, status) {
 			r = result.split('"');
-			if (r[7] < 10 || r[11] < 10 || r[15] < 10) {
+			if (r[7] > 10 || r[11] < 10 || r[15] < 10) {
 				// 如果价钱小于10，发送点击命令
 				// chrome.runtime.sendMessage("ok", function(response) {
 				// document.write(response);
@@ -66,14 +66,14 @@ var myInt = setInterval(function() {
 		},
 		dataType : "text"
 	});
-}, 100);
+}, 1000);
 
 setInterval(function() {
 	var d = new Date();
 	if (d.getHours() > 10 && d.getMinutes() < 3) {
-		//clearInterval(myInt);
+		clearInterval(myInt);
 	}
-},1000);
+});
 // chrome.runtime.onMessage.addListener(function(message, sender, sendResponse)
 // {
 // if (message == 'start') { // sendResponse('Hello from background.');
