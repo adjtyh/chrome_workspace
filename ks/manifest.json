@@ -1,0 +1,32 @@
+{
+    "manifest_version": 2,
+    "name": "中国医院考试系统_导出txt",
+    "version": "1.0",
+    "description": "中国医院考试系统_导出txt",
+    "content_scripts": [
+        {
+			"all_frames" : true,
+            "matches": ["http://10.168.69.122/ks/*"],
+            "js": ["js/jquery-3.1.1.js","js/exportToTxt.js"],
+			"run_at": "document_end"
+        }
+    ],
+	"icons": {
+        "16": "images/icon16.png",
+        "48": "images/icon16.png",
+        "128": "images/icon16.png"
+    },
+    "browser_action": {
+        "default_icon": {
+            "19": "images/icon16.png",
+            "38": "images/icon16.png"
+        },
+        "default_title": "中国医院考试系统_导出txt",
+        "default_popup": "popup.html"
+    },
+	"permissions": [
+        "http://10.168.69.122/ks/*"
+    ]
+}
+
+

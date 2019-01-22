@@ -1,0 +1,28 @@
+{
+    "manifest_version": 2,
+    "name": "采购信息",
+    "version": "1.0",
+    "description": "获取省采购平台采购计划信息",
+    "content_scripts": [
+        {
+			"all_frames" : true,
+            "matches": ["http://210.76.65.159/gdgpms/new/pms2/cityplanprocess/*"],
+            "js": ["js/jquery-3.3.1.min.js","js/copy_plan_message.js"],
+			"run_at": "document_end"
+        }
+    ],
+    "icons": {
+        "16": "images/clock.png",
+        "48": "images/clock.png",
+        "128": "images/clock.png"
+    },
+    "browser_action": {
+        "default_icon": {
+            "19": "images/clock.png",
+            "38": "images/clock.png"
+        },
+        "default_title": "采购信息",
+        "default_popup": "popup.html"
+    }
+}
+
